@@ -21,4 +21,11 @@ async function startServer(){
     }
 }
 
-startServer();
+mongoose.connect(process.env.MONGO_URI)
+.then(() => {
+    startServer();  
+})
+.catch(err => {
+    console.log("Database connection failed.")
+    console.error(err);
+})
