@@ -3,12 +3,14 @@ var http = require("http");
 var cors = require("cors");
 require('dotenv').config();
 var mongoose = require('mongoose');
+var authenticationRoutes = require("./routes/authenticationRoutes");
 
 const port = process.env.APP_PORT;
 
 var app = express();
 app.use(express.json());
 app.use(cors());
+app.use('/api/authentication',authenticationRoutes);
 
 var server = http.createServer(app);
 
