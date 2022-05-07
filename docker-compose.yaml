@@ -23,7 +23,7 @@ services:
       context: ./backend
       dockerfile: Dockerfile
    ports:
-     - 3080:3080
+     - 2442:2442
    container_name: mern-backend
    networks:
      - mern-stack-net
