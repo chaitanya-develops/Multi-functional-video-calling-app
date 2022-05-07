@@ -4,6 +4,7 @@ var cors = require("cors");
 require('dotenv').config();
 var mongoose = require('mongoose');
 var authenticationRoutes = require("./routes/authenticationRoutes");
+var socketServer = require("./socketServer");
 
 const port = process.env.APP_PORT;
 
