@@ -7,6 +7,7 @@ import SideBar from "./SideBar/SideBar";
 import Messenger from "./Messenger/Messenger";
 import {logout} from "../shared/utils/auth"
 import { authActions } from "../store/actions/authActions";
+import { connectWithSocketServer } from "../realtime/socketConnection";
 
 
 
@@ -32,6 +33,7 @@ const Dashboard = ({setUserDetails} ) => {
       logout();
     } else {
       setUserDetails(JSON.parse(userDetails));
+      connectWithSocketServer();
     }
   }, []);
   return (
