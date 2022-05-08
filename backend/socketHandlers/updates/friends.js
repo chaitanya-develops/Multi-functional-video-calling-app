@@ -6,7 +6,7 @@ const updateFriendsPendingInvitations = async (userId) => {
   try {
     const pendingInvitations = await FriendInvitation.find({
       receiverId: userId,
-    }).populate("senderId", "_id username email");
+    }).populate("senderId", "_id username mail");
 
     // find all active connections of specific userId
     const receiverList = serverStore.getActiveConnections(userId);
@@ -23,7 +23,6 @@ const updateFriendsPendingInvitations = async (userId) => {
   }
 };
 
-
 const updateFriends = async (userId) => {
   try {
     // find active connections of specific id (online users)
@@ -32,14 +31,14 @@ const updateFriends = async (userId) => {
     if (receiverList.length > 0) {
       const user = await User.findById(userId, { _id: 1, friends: 1 }).populate(
         "friends",
-        "_id username email"
+        "_id username mail"
       );
 
       if (user) {
         const friendsList = user.friends.map((f) => {
           return {
             id: f._id,
-            email: f.email,
+            mail: f.mail,
             username: f.username,
           };
         });
@@ -58,8 +57,6 @@ const updateFriends = async (userId) => {
     console.log(err);
   }
 };
-
-
 
 module.exports = {
   updateFriendsPendingInvitations,
