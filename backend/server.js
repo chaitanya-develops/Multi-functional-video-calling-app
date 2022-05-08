@@ -14,6 +14,7 @@ app.use(cors());
 app.use('/api/authentication',authenticationRoutes);
 
 var server = http.createServer(app);
+socketServer.registerSocketServer(server);
 
 async function startServer(){
     try{
