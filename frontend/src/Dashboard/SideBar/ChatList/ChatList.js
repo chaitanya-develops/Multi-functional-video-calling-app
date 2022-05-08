@@ -1,25 +1,9 @@
 import React from "react";
 import { styled } from "@mui/system";
 import ChatListItem from "./ChatListItem";
+import { connect } from 'react-redux';
 
 
-const DUMMY_FRIENDS = [
-  {
-    id: 1,
-    username: "Mark",
-    isOnline: true,
-  },
-  {
-    id: 2,
-    username: "Anna",
-    isOnline: false,
-  },
-  {
-    id: 3,
-    username: "John",
-    isOnline: false,
-  },
-];
 
 const MainContainer = styled("div")({
   flexGrow: 1,
@@ -28,10 +12,19 @@ const MainContainer = styled("div")({
   
 });
 
-const ChatList = () => {
+const checkOnlineUsers = (friends = [], onlineUsers = []) => {
+  friends.forEach((f) => {
+    const isUserOnline = onlineUsers.find((user) => user.userId === f.id);
+    f.isOnline = isUserOnline ? true : false;
+  });
+
+  return friends;
+};
+
+const ChatList = ({ friends, onlineUsers}) => {
   return (
     <MainContainer>
-      {DUMMY_FRIENDS.map((f) => (
+      {checkOnlineUsers(friends,onlineUsers).map((f) => (
         <ChatListItem
           username={f.username}
           
@@ -44,4 +37,10 @@ const ChatList = () => {
   );
 };
 
-export default ChatList;
+const mapStoreStateToProps = ({ friends }) => {
+  return {
+    ...friends,
+  };
+};
+
+export default connect(mapStoreStateToProps)(ChatList);
