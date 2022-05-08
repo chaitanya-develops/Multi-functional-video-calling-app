@@ -33,7 +33,7 @@ const Dashboard = ({setUserDetails} ) => {
       logout();
     } else {
       setUserDetails(JSON.parse(userDetails));
-      connectWithSocketServer();
+      connectWithSocketServer(JSON.parse(userDetails));
     }
   }, []);
   return (
