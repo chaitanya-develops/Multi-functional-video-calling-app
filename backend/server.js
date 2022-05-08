@@ -4,6 +4,7 @@ var cors = require("cors");
 require('dotenv').config();
 var mongoose = require('mongoose');
 var authenticationRoutes = require("./routes/authenticationRoutes");
+var friendInvitationRoutes = require("./routes/friendInvitationRoutes");
 var socketServer = require("./socketServer");
 
 const port = process.env.APP_PORT;
@@ -12,6 +13,7 @@ var app = express();
 app.use(express.json());
 app.use(cors());
 app.use('/api/authentication',authenticationRoutes);
+app.use('/api/friend-invitation',friendInvitationRoutes);
 
 var server = http.createServer(app);
 socketServer.registerSocketServer(server);
