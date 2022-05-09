@@ -1,7 +1,7 @@
 import React from "react";
 import { styled } from "@mui/system";
 import Messages from "./Messages/Messages";
-import NewMessageInput from "./MessageInput";
+import NewMessageInput from "./NewMessageInput";
 
 
 const Wrapper = styled("div")({
