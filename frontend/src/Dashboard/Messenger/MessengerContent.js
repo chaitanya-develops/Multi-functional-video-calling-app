@@ -1,15 +1,19 @@
 import React from "react";
-import { useEffect } from "react";
 import { styled } from "@mui/system";
+import Messages from "./Messages/Messages";
+import NewMessageInput from "./MessageInput";
 
 
 const Wrapper = styled("div")({
     flexGrow: 1,
 });
 
-const MessengerContent = () => {
+const MessengerContent = ({chosenChatDetails}) => {
     return(
-        <div></div>
+        <Wrapper>
+            <Messages />
+            <NewMessageInput />
+        </Wrapper>
     );
     
     

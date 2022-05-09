@@ -31,7 +31,7 @@ const MessagesHeader = ({ name = "" }) => {
           marginRight: "5px",
         }}
       >
-        This is the beginning of your conversation with {name}
+        conversation starts here
       </Typography>
     </MainContainer>
   );
