@@ -1,6 +1,7 @@
 import React from "react";
 import { styled } from "@mui/system";
 import DropdownMenu from "./DropdownMenu";
+import ChatHead from "./ChatHead";
 
 
 const MainContainer = styled("div")({
@@ -18,6 +19,7 @@ const MainContainer = styled("div")({
 const AppBar = () => {
   return (
     <MainContainer>
+        <ChatHead />
         <DropdownMenu />
       
     </MainContainer>
