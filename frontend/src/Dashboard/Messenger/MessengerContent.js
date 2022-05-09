@@ -3,6 +3,7 @@ import { styled } from "@mui/system";
 import Messages from "./Messages/Messages";
 import NewMessageInput from "./NewMessageInput";
 import { getDirectChatHistory } from "../../realtime/socketConnection";
+import {useEffect} from "react";
 
 
 const Wrapper = styled("div")({
