@@ -1,7 +1,7 @@
 import { authActions } from "../actions/authActions";
 
 const initState = {
-  userDetails: null,
+  userDetails: JSON.parse(localStorage.getItem("user")),
 };
 
 const reducer = (state = initState, action) => {
