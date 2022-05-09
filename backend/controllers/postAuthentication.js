@@ -23,6 +23,7 @@ const loginPost = async (req,res) => {
                     username: user.username,
                     email: user.email,
                     token: token,
+                    _id: user._id,
                 },
             });
             return;
@@ -62,6 +63,7 @@ const registerPost = async (req,res) => {
                 username: user.username,
                 email: user.email,
                 token: token,
+                _id: user._id,
             },
         });
     } catch (error) {
