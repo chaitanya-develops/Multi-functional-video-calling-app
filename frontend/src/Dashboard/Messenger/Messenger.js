@@ -12,12 +12,12 @@ const MainContainer = styled("div")({
   display: "flex",
 });
 
-const Messenger = (chosenChatDetails) => {
+const Messenger = ({chosenChatDetails}) => {
   return (
   <MainContainer>
     <AppBar />
-    <WelcomeMessage />
-    {/* {!chosenChatDetails ? (<WelcomeMessage />) : (<MessengerContent chosenChatDetails={chosenChatDetails} />)}  */}
+    
+    {!chosenChatDetails ? (<WelcomeMessage />) : (<MessengerContent chosenChatDetails={chosenChatDetails} />)} 
     
   </MainContainer>);
 };

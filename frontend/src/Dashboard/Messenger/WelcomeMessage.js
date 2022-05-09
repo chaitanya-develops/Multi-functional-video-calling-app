@@ -14,7 +14,7 @@ const WelcomeMessage = () => {
   return (
     <Wrapper>
       <Typography variant="h6" sx={{ color: "black" }}>
-        Welcome to videocon
+        Place holder
       </Typography>
     </Wrapper>
   );
