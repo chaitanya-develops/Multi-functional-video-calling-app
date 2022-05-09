@@ -1,7 +1,11 @@
 import React from "react";
 
 const MessengerContent = () => {
-    <div> </div>
-}
+    return(
+        <div></div>
+    );
+    
+    
+};
 
 export default MessengerContent;

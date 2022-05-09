@@ -13,7 +13,7 @@ const Wrapper = styled("div")({
 const WelcomeMessage = () => {
   return (
     <Wrapper>
-      <Typography variant="h6" sx={{ color: "white" }}>
+      <Typography variant="h6" sx={{ color: "black" }}>
         Welcome to videocon
       </Typography>
     </Wrapper>
