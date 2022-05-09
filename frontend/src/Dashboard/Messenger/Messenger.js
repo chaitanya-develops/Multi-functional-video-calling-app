@@ -6,13 +6,9 @@ import WelcomeMessage from "./WelcomeMessage";
 import MessengerContent from "./MessengerContent";
 
 const MainContainer = styled("div")({
-  
-  width: "60%",
-  height: "90%",
+  flexGrow: 1,
   backgroundColor: "#FFFFFF",
-  marginTop: "40px",
-  marginRight: "15%",
-  marginBottom: "40px",
+  marginTop: "50px",
   display: "flex",
 });
 
@@ -20,7 +16,8 @@ const Messenger = (chosenChatDetails) => {
   return (
   <MainContainer>
     <AppBar />
-    {!chosenChatDetails ? (<WelcomeMessage />) : (<MessengerContent chosenChatDetails={chosenChatDetails} />)} 
+    <WelcomeMessage />
+    {/* {!chosenChatDetails ? (<WelcomeMessage />) : (<MessengerContent chosenChatDetails={chosenChatDetails} />)}  */}
     
   </MainContainer>);
 };

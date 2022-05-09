@@ -7,11 +7,9 @@ import ChatList from "./ChatList/ChatList";
 import PendingInvitationsList from "./InvitationList/PendingInvitationsList";
 
 const MainContainer = styled("div")({
-    marginLeft: "10%",
-    marginTop: "40px",
-    marginBottom: "40px",
-  width: "23%",
-  height: "90%",
+
+  width: "296px",
+  height: "100%",
   display: "flex",
   flexDirection: "column",
   alignItems: "center",

@@ -5,11 +5,13 @@ import ChatHead from "./ChatHead";
 
 
 const MainContainer = styled("div")({
-
+  position: "absolute",
+  right: "0",
+  top: "0",
   height: "50px",
   borderBottom: "1px solid black",
   backgroundColor: "#36393f",
-  width: "100%",
+  width: "calc(100% - 326px)",
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
