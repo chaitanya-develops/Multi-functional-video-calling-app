@@ -25,6 +25,7 @@ pipeline{
                 sh 'npm test'
                 }
             }
+        }
         
         stage('Stage 4: Build Docker image for backend'){
             steps{
