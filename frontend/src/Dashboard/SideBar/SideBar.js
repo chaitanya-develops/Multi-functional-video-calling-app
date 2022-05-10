@@ -8,7 +8,7 @@ import PendingInvitationsList from "./InvitationList/PendingInvitationsList";
 
 const MainContainer = styled("div")({
 
-  width: "296px",
+  width: "266px",
   height: "100%",
   display: "flex",
   flexDirection: "column",

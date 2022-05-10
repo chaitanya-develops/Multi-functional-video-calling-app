@@ -5,3 +5,11 @@ export const callActions = {
     SET_LOCAL_STREAM: "ROOM.SET_LOCAL_STREAM",
     SET_REMOTE_STREAMS: "ROOM.SET_REMOTE_STREAMS",
 };
+
+export const setOpenRoom = (isUserRoomCreator = false, isUserInRoom = false) => {
+    return {
+        type: roomActions.OPEN_ROOM,
+        isUserRoomCreator,
+        isUserInRoom,
+    }
+};

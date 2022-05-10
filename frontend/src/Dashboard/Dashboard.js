@@ -8,6 +8,7 @@ import Messenger from "./Messenger/Messenger";
 import {logout} from "../shared/utils/auth"
 import { authActions } from "../store/actions/authActions";
 import { connectWithSocketServer } from "../realtime/socketConnection";
+import videoBar from "./videoBar/videoBar";
 
 
 
@@ -38,6 +39,7 @@ const Dashboard = ({setUserDetails} ) => {
   }, []);
   return (
     <Wrapper>
+      <videoBar />
       <SideBar />
       <Messenger />
       
