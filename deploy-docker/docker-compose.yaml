@@ -2,7 +2,7 @@ version: "3"
 services:
   
   frontend:
-   image:chaitanyadevelops/videocall_client:latest
+   image: chaitanyadevelops/videocall_client:latest
    ports:
     -  3000:3000
    container_name: mern-frontend
@@ -14,7 +14,7 @@ services:
    tty: true
 
   backend:
-   image:chaitanyadevelops/videocall_server:latest
+   image: chaitanyadevelops/videocall_server:latest
    ports:
      - 2442:2442
    container_name: mern-backend
