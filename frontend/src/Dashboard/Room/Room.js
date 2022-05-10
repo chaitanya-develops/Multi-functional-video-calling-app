@@ -10,7 +10,7 @@ const MainContainer = styled("div")({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "#000000",
 });
   
 const fullScreenRoomStyle = {
