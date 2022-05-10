@@ -29,16 +29,7 @@ pipeline{
                     }
                 }
             }
-        }
-        stage('Stage : npm testing'){
-            steps{
-                dir("backend"){
-                    sh 'npm i'
-                    sh 'npm run test'
-                }
-            }
-        }
-        
+        }  
         
         stage('Stage 4: Docker Hub Push server image') {
             steps {
