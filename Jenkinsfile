@@ -11,8 +11,22 @@ pipeline{
                 git branch: 'deployment', url: 'https://github.com/chaitanya-develops/Multi-functional-video-calling-app.git'
             }
         }
+        stage('Stage 2 : Build and run backend server'){
+            steps{
+                dir("backend"){
+                    sh 'npm install'
+                    sh 'npm start'
+                }
+            }
+        }
+        stage('Stage 3 : Test') {
+            steps {
+                dir("backend"){
+                sh 'npm test'
+                }
+            }
         
-        stage('Stage 2: Build Docker image for backend'){
+        stage('Stage 4: Build Docker image for backend'){
             steps{
                 dir("backend"){
                     script{
@@ -21,7 +35,7 @@ pipeline{
                 }
             }
         }
-        stage('Stage 3: Build Docker Client'){
+        stage('Stage 5: Build Docker Client'){
             steps{
                 dir("frontend"){
                     script{
@@ -30,14 +44,8 @@ pipeline{
                 }
             }
         }
-        stage('Stage 4 : npm testing'){
-            steps{
-                dir("backend"){
-                    sh 'npm test'
-                }
-            }
-        }
-        stage('Stage 5: Docker Hub Push server image') {
+
+        stage('Stage 6: Docker Hub Push server image') {
             steps {
                 script {
                     docker.withRegistry('', 'docker-jenkins') {
@@ -46,7 +54,7 @@ pipeline{
                 }
             }
         }
-        stage('Stage 6: Docker Hub Push client image') {
+        stage('Stage 7: Docker Hub Push client image') {
             steps {
                 script {
                     docker.withRegistry('', 'docker-jenkins') {
@@ -55,7 +63,7 @@ pipeline{
                 }
             }
         }       
-        stage('Stage 7: Ansible Deployment to hosts'){
+        stage('Stage 8: Ansible Deployment to hosts'){
             steps{
                 
                 ansiblePlaybook becomeUser: 'null', colorized: true, installation: 'Ansible', inventory: 'deploy-docker/inventory', playbook: 'deploy-docker/deploy-app.yml', sudoUser: 'null'
