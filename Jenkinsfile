@@ -15,14 +15,7 @@ pipeline{
             steps{
                 dir("backend"){
                     sh 'npm install'
-                    sh 'npm start'
-                }
-            }
-        }
-        stage('Stage 3 : Test') {
-            steps {
-                dir("backend"){
-                sh 'npm test'
+                    sh 'npm test'
                 }
             }
         }
