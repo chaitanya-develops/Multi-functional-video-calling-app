@@ -17,12 +17,17 @@ const reducer = (state = initState,action) => {
                 isUserInRoom: action.isUserInRoom,
                 isUserRoomCreator: action.isUserRoomCreator,
 
-            }
+            };
         case callActions.SET_ROOM_DETAILS:
             return{
                 ...state,
                 roomDetails: action.roomDetails,
-            }
+            };
+        case callActions.SET_ACTIVE_ROOMS:
+            return {
+                ...state,
+                activeRooms: action.activeRooms,
+            };
         default:
             return state;
     }

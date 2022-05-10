@@ -20,3 +20,10 @@ export const setRoomDetails = (roomDetails) => {
         roomDetails,
     };
 };
+
+export const setActiveRooms = (activeRooms) => {
+    return{
+        type: callActions.SET_ACTIVE_ROOMS,
+        activeRooms,
+    };
+};
