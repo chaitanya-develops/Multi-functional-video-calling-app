@@ -5,9 +5,9 @@ services:
    image: chaitanyadevelops/videocall_client
    ports:
     -  3000:3000
-   container_name: mern-frontend
+   container_name: videocall-frontend
    networks:
-    -  mern-stack-net
+    -  mern-net
    depends_on:
     - backend
    stdin_open: true
@@ -17,9 +17,9 @@ services:
    image: chaitanyadevelops/videocall_server
    ports:
      - 2442:2442
-   container_name: mern-backend
+   container_name: videocall-backend
    networks:
-     - mern-stack-net
+     - mern-net
    depends_on:
     - db
 
@@ -29,12 +29,12 @@ services:
       - 27017:27017
     container_name: mongo-database
     networks:
-      - mern-stack-net
+      - mern-net
     volumes:
       - mongo-data:/data/db
 
 networks:
-  mern-stack-net:
+  mern-net:
     driver: bridge
 
 volumes:
