@@ -1,0 +1,12 @@
+---
+- name: Pull and Run docker images of video call app
+  hosts: all
+  tasks:
+    - name: copy docker compose file from node to remote host
+      copy:
+        src: ./docker-compose.yaml
+        dest: ./
+    - name: pull images required in docker-compose
+      command: docker-compose -f ./docker-compose.yaml pull
+    - name: run the pulled docker images in detached mode
+      command: docker-compose -f ./docker-compose.yaml up -d

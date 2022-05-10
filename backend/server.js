@@ -6,6 +6,7 @@ var mongoose = require('mongoose');
 var authenticationRoutes = require("./routes/authenticationRoutes");
 var friendInvitationRoutes = require("./routes/friendInvitationRoutes");
 var socketServer = require("./socketServer");
+const logger = require("./logging/loggerConfig");
 
 const port = process.env.APP_PORT;
 
@@ -21,17 +22,21 @@ socketServer.registerSocketServer(server);
 async function startServer(){
     try{
         server.listen(port);
+        logger.info("Server started");
         console.log(`Server ready at ${port}`);
     } catch(e){
+        logger.error("server down");
         console.error(e);
     }
 }
 
 mongoose.connect(process.env.MONGO_URI)
 .then(() => {
+    logger.info("Database connection established.");
     startServer();  
 })
 .catch(err => {
+    logger.error("Database connection failed.");
     console.log("Database connection failed.")
     console.error(err);
 })

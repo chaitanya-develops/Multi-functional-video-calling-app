@@ -1,6 +1,7 @@
 const User = require('../models/user');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const logger = require('../logging/loggerConfig');
 
 
 const loginPost = async (req,res) => {
@@ -18,6 +19,7 @@ const loginPost = async (req,res) => {
                     expiresIn: "2h",
                 }
             );
+            logger.info("Login succesfull");
             res.status(201).json({
                 userDetails: {
                     username: user.username,
@@ -28,8 +30,10 @@ const loginPost = async (req,res) => {
             });
             return;
         }
+        logger.error("Invalid Credentials");
         return res.status(400).send('Invalid Credentials');
     } catch (error) {
+        logger.error(error);
         return res.status(500).send('Try again');
     }
 };
@@ -40,6 +44,7 @@ const registerPost = async (req,res) => {
         const { username, email, password } = req.body;
         const userExists = await User.exists({email: email.toLowerCase() });
         if(userExists){
+            logger.error("User already exists");
             return res.status(409).send('E-mail already in use.');
         }
         var encryptedPassword = await bcrypt.hash(password,16);
@@ -58,6 +63,7 @@ const registerPost = async (req,res) => {
                 expiresIn: "2h",
             }
         );
+        logger.info("Registration successfull")
         res.status(201).json({
             userDetails: {
                 username: user.username,
@@ -67,6 +73,7 @@ const registerPost = async (req,res) => {
             },
         });
     } catch (error) {
+        logger.error(error);
         console.error(error);
         return res.status(500).send("Try again!");
         
