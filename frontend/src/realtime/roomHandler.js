@@ -12,3 +12,9 @@ export const newRoomCreated = (data) => {
 
     store.dispatch(setRoomDetails(roomDetails));
 };
+
+export const updateActiveRooms = (data) => {
+    const {activeRooms} = data;
+    console.log('new active rooms data from store');
+    console.log(activeRooms);
+}
