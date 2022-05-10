@@ -12,10 +12,10 @@ const MainContainer = styled("div")({
   backgroundColor: "#202225",
 });
 
-const videoBar = () => {
+const VideoSideBar = () => {
     return (
         <CreateRoomButton />
     );
 };
 
-export default videoBar;
+export default VideoSideBar;

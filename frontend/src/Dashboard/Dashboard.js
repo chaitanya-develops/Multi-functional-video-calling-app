@@ -8,7 +8,8 @@ import Messenger from "./Messenger/Messenger";
 import {logout} from "../shared/utils/auth"
 import { authActions } from "../store/actions/authActions";
 import { connectWithSocketServer } from "../realtime/socketConnection";
-import videoBar from "./videoBar/videoBar";
+import VideoSideBar from "./videoSideBar/videoSideBar";
+import Room from "./Room/Room";
 
 
 
@@ -20,7 +21,7 @@ const Wrapper = styled("div")({
   backgroundColor : "#d6d6ef",
 });
 
-const Dashboard = ({setUserDetails} ) => {
+const Dashboard = ({setUserDetails, isUserInRoom} ) => {
   useEffect(() => {
     const userDetails = localStorage.getItem("user");
     function setUserDetails(userDetails) {
@@ -39,13 +40,21 @@ const Dashboard = ({setUserDetails} ) => {
   }, []);
   return (
     <Wrapper>
-      <videoBar />
+      <VideoSideBar />
       <SideBar />
       <Messenger />
+      {isUserInRoom && <Room />}
       
     </Wrapper>
   )
 };
+
+
+const mapStoreStateToProps = ({ call }) => {
+  return {
+    ...call,
+  };
+}
 
 const mapActionsToProps = (dispatch) => {
   return {
@@ -53,4 +62,4 @@ const mapActionsToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapActionsToProps)(Dashboard);
+export default connect(mapStoreStateToProps, mapActionsToProps)(Dashboard);
