@@ -2,7 +2,7 @@ version: "3"
 services:
   
   frontend:
-   image: chaitanyadevelops/videocall_client:latest
+   image: chaitanyadevelops/videocall_client
    ports:
     -  3000:3000
    container_name: mern-frontend
@@ -14,7 +14,7 @@ services:
    tty: true
 
   backend:
-   image: chaitanyadevelops/videocall_server:latest
+   image: chaitanyadevelops/videocall_server
    ports:
      - 2442:2442
    container_name: mern-backend
@@ -27,7 +27,7 @@ services:
     image: mongo
     ports:
       - 27017:27017
-    container_name: mongo-db
+    container_name: mongo-database
     networks:
       - mern-stack-net
     volumes:
