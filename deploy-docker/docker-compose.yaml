@@ -2,33 +2,24 @@ version: "3"
 services:
   
   frontend:
-   build:
-      context: ./frontend
-      dockerfile: Dockerfile
+   image:chaitanyadevelops/videocall_client:latest
    ports:
     -  3000:3000
    container_name: mern-frontend
    networks:
     -  mern-stack-net
-   volumes:
-    -  ./frontend/src:/app/src
-    -  ./frontend/public:/app/public
    depends_on:
     - backend
    stdin_open: true
    tty: true
 
   backend:
-   build:
-      context: ./backend
-      dockerfile: Dockerfile
+   image:chaitanyadevelops/videocall_server:latest
    ports:
      - 2442:2442
    container_name: mern-backend
    networks:
      - mern-stack-net
-   volumes:
-    - ./backend/src:/app/src
    depends_on:
     - db
 
