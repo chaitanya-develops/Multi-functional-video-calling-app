@@ -8,8 +8,15 @@ export const callActions = {
 
 export const setOpenRoom = (isUserRoomCreator = false, isUserInRoom = false) => {
     return {
-        type: roomActions.OPEN_ROOM,
+        type: callActions.OPEN_ROOM,
         isUserRoomCreator,
         isUserInRoom,
     }
+};
+
+export const setRoomDetails = (roomDetails) => {
+    return {
+        type: callActions.SET_ROOM_DETAILS,
+        roomDetails,
+    };
 };

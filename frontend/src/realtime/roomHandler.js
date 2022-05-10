@@ -1,8 +1,14 @@
-import { setOpenRoom } from "../store/actions/callActions";
+import { setOpenRoom, setRoomDetails } from "../store/actions/callActions";
 import store from "../store/store";
 import * as socketConnection from "./socketConnection"
 
-export const roomHandler = () => {
+export const createNewRoom = () => {
     store.dispatch(setOpenRoom(true,true));
     socketConnection.createNewRoom();
+};
+
+export const newRoomCreated = (data) => {
+    const { roomDetails } = data;
+
+    store.dispatch(setRoomDetails(roomDetails));
 };

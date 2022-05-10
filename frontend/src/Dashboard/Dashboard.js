@@ -8,7 +8,7 @@ import Messenger from "./Messenger/Messenger";
 import {logout} from "../shared/utils/auth"
 import { authActions } from "../store/actions/authActions";
 import { connectWithSocketServer } from "../realtime/socketConnection";
-import VideoSideBar from "./videoSideBar/videoSideBar";
+import VideoSideBar from "./VideoSideBar/VideoSideBar";
 import Room from "./Room/Room";
 
 
