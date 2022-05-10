@@ -12,7 +12,7 @@ describe('\n\n\n\nSignup ::', () => {
         server
             .post('/api/authentication/register')
             .send({
-              username: "tonton",  email: "tosn@gmail.com", password: "friends"
+              username: "tonton",  email: "tofdsn@gmail.com", password: "friends"
             })
             .end((err, res) => {
                 res.status.should.equal(201);
