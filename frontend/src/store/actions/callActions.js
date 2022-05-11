@@ -27,3 +27,10 @@ export const setActiveRooms = (activeRooms) => {
         activeRooms,
     };
 };
+
+export const setLocalStream = (localStream) => {
+    return {
+      type: callActions.SET_LOCAL_STREAM,
+      localStream,
+    };
+  };
