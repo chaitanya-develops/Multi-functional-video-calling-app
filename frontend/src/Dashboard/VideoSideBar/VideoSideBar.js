@@ -30,9 +30,9 @@ const VideoSideBar = ({ activeRooms, isUserInRoom }) => {
   );
 };
 
-const mapStoreStateToProps = ({ call }) => {
+const mapStoreStateToProps = ({ room}) => {
   return {
-    ...call,
+    ...room,
   };
 };
 

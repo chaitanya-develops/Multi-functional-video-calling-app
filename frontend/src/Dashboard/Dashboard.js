@@ -24,12 +24,12 @@ const Wrapper = styled("div")({
 const Dashboard = ({setUserDetails, isUserInRoom} ) => {
   useEffect(() => {
     const userDetails = localStorage.getItem("user");
-    function setUserDetails(userDetails) {
-      return {
-        type: authActions.SET_USER_DETAILS,
-        userDetails,
-      };
-    };
+    // function setUserDetails(userDetails) {
+    //   return {
+    //     type: authActions.SET_USER_DETAILS,
+    //     userDetails,
+    //   };
+    // };
 
     if (!userDetails) {
       logout();
@@ -50,9 +50,9 @@ const Dashboard = ({setUserDetails, isUserInRoom} ) => {
 };
 
 
-const mapStoreStateToProps = ({ call }) => {
+const mapStoreStateToProps = ({ room}) => {
   return {
-    ...call,
+    ...room,
   };
 }
 
