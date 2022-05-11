@@ -19,6 +19,7 @@ const Wrapper = styled("div")({
   height: "100vh",
   display: "flex",
   backgroundColor : "#d6d6ef",
+  // margin: "50px",
 });
 
 const Dashboard = ({setUserDetails, isUserInRoom} ) => {
