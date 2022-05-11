@@ -13,7 +13,7 @@ const rootReducer = combineReducers({
   alert: alertReducer,
   friends: friendsReducer,
   chat: chatReducer,
-  call: callReducer,
+  room: callReducer,
 
 
 

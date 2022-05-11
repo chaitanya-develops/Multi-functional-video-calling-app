@@ -1,6 +1,7 @@
-import { setOpenRoom, setRoomDetails, setActiveRooms } from "../store/actions/callActions";
+import { setOpenRoom, setRoomDetails, setActiveRooms,setRemoteStreams,setScreenSharingStream,setIsUserJoinedOnlyWithAudio,setLocalStream } from "../store/actions/callActions";
 import store from "../store/store";
 import * as socketConnection from "./socketConnection"
+import * as webRTCHandler from "./webRTCHandler";
 
 export const createNewRoom = () => {
     store.dispatch(setOpenRoom(true,true));
@@ -33,15 +34,37 @@ export const updateActiveRooms = (data) => {
 };
 
 export const joinRoom = (roomId) => {
-    
-    store.dispatch(setRoomDetails({ roomId }));
-    store.dispatch(setOpenRoom(false, true));
-    socketConnection.joinRoom({ roomId });
+    const successCalbackFunc = () => {
+      store.dispatch(setRoomDetails({ roomId }));
+      store.dispatch(setOpenRoom(false, true));
+      const audioOnly = store.getState().room.audioOnly;
+      store.dispatch(setIsUserJoinedOnlyWithAudio(audioOnly));
+      socketConnection.joinRoom({ roomId });
+    };
+  
+    const audioOnly = store.getState().room.audioOnly;
+    webRTCHandler.getLocalStreamPreview(audioOnly, successCalbackFunc);
 };
 
 export const leaveRoom = () => {
     const roomId = store.getState().room.roomDetails.roomId;
-    socketConnection.leaveRoom({roomId});
+  
+    const localStream = store.getState().room.localStream;
+    if (localStream) {
+      localStream.getTracks().forEach((track) => track.stop());
+      store.dispatch(setLocalStream(null));
+    }
+  
+    const screenSharingStream = store.getState().room.screenSharingStream;
+    if (screenSharingStream) {
+      screenSharingStream.getTracks().forEach((track) => track.stop());
+      store.dispatch(setScreenSharingStream(null));
+    }
+  
+    store.dispatch(setRemoteStreams([]));
+    webRTCHandler.closeAllConnections();
+  
+    socketConnection.leaveRoom({ roomId });
     store.dispatch(setRoomDetails(null));
-    store.dispatch(setOpenRoom(false,false));
-}
+    store.dispatch(setOpenRoom(false, false));
+  };
