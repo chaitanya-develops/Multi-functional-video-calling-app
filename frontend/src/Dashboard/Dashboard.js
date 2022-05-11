@@ -45,6 +45,7 @@ const Dashboard = ({setUserDetails, isUserInRoom} ) => {
       <Messenger />
       {isUserInRoom && <Room />}
       
+      
     </Wrapper>
   )
 };

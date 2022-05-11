@@ -11,7 +11,7 @@ const MainContainer = styled("div")({
   height: "50px",
   borderBottom: "1px solid black",
   backgroundColor: "#36393f",
-  width: "calc(100% - 326px)",
+  width: "calc(100% - 375px)",
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",

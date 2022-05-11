@@ -19,11 +19,11 @@ const MessageContainer = styled("div")({
 });
 
 const MessageContent = styled("div")({
-  color: "#DCDDDE",
+  color: "#000000",
 });
 
 const SameAuthorMessageContent = styled("div")({
-  color: "#DCDDDE",
+  color: "#000000",
   width: "97%",
 });
 

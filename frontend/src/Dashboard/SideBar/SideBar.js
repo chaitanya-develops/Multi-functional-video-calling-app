@@ -19,7 +19,7 @@ const MainContainer = styled("div")({
 const SideBar = () => {
   return (
     <MainContainer>
-      <MainPageButton />
+      {/* <MainPageButton /> */}
       <AddFriendButton />
       <FriendsTitle title="Messages" />
       <ChatList />
