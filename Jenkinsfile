@@ -22,14 +22,14 @@ pipeline{
                 }
             }
         }
-//          stage('Stage 3 : test  backend server'){
-//             steps{
-//                 dir("backend"){
-//                     sh 'npm test'
+         stage('Stage 3 : test  backend server'){
+            steps{
+                dir("backend"){
+                    sh 'npm test'
                    
-//                 }
-//             }
-//         }
+                }
+            }
+        }
         
 //         stage('Stage 4: Build Docker image for backend'){
 //             steps{
