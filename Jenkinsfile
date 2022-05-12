@@ -5,20 +5,31 @@ pipeline{
             
     }
     agent any
+    
+    tools {nodejs "Node-Build"}
+    
     stages{
         stage('Stage 1: Git Clone'){
             steps{
                 git branch: 'letscall', url: 'https://github.com/chaitanya-develops/Multi-functional-video-calling-app.git'
             }
         }
-       // stage('Stage 2 : Build and run backend server'){
-           // steps{
-               // dir("backend"){
-                 //   sh 'npm install'
-                   // sh 'npm run test'
-                //}
-            //}
-        //}
+        stage('Stage 2 : Build  backend server'){
+            steps{
+                dir("backend"){
+                    sh 'npm install'
+                   
+                }
+            }
+        }
+         stage('Stage 3 : test  backend server'){
+            steps{
+                dir("backend"){
+                    sh 'npm test'
+                   
+                }
+            }
+        }
         
         stage('Stage 4: Build Docker image for backend'){
             steps{
