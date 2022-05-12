@@ -1,3 +1,4 @@
+const logger = require("../../logging/loggerConfig");
 const FriendInvitation = require("../../models/friendInvitation");
 const User = require("../../models/user");
 const friendsUpdates = require("../../socketHandlers/updates/friends");
@@ -33,10 +34,12 @@ const postAccept = async (req, res) => {
 
     // update list of friends pending invitations
     friendsUpdates.updateFriendsPendingInvitations(receiverId.toString());
+    logger.info("Friends added successfully.");
 
     return res.status(200).send("Friend successfuly added");
   } catch (err) {
     console.log(err);
+    logger.error("Friend addition and update failed.")
     return res.status(500).send("Something went wrong. Please try again");
   }
 };

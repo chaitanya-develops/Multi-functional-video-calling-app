@@ -1,9 +1,11 @@
 const User = require("../../models/user");
 const FriendInvitation = require("../../models/friendInvitation");
 const friendsUpdates = require("../../socketHandlers/updates/friends");
+const logger = require("../../logging/loggerConfig");
 
 
 const postInvite = async (req, res) => {
+  console.log(req);
   const { targetMailAddress } = req.body;
 
   const { userId, email: email } = req.user;
@@ -11,6 +13,7 @@ const postInvite = async (req, res) => {
   // check if invitation is valid
 
   if (email.toLowerCase() === targetMailAddress.toLowerCase()) {
+    logger.warn("Trying to send friend request to themself.");
     return res
       .status(409)
       .send("Sorry. You cannot become friend with yourself");
@@ -21,6 +24,7 @@ const postInvite = async (req, res) => {
   });
 
   if (!targetUser) {
+    logger.warn("Target user doesnot exist.");
     return res
       .status(404)
       .send(
@@ -34,6 +38,7 @@ const postInvite = async (req, res) => {
   });
 
   if (invitationAlreadyReceived) {
+    logger.warn("Invitation already sent.");
     return res.status(409).send("Invitation has been already sent");
   }
 
@@ -44,6 +49,7 @@ const postInvite = async (req, res) => {
   );
 
   if (usersAlreadyFriends) {
+    logger.warn("Friend already in friend list.");
     return res
       .status(409)
       .send("Friend already added. Please check friends list");
@@ -57,7 +63,7 @@ const postInvite = async (req, res) => {
   
   // update friend request list
   friendsUpdates.updateFriendsPendingInvitations(targetUser._id.toString());
-
+  logger.info("Friend invitation sent successfully.");
   return res.status(201).send("Invitation has been sent");
 };
 

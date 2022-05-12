@@ -1,3 +1,4 @@
+const logger = require("../logging/loggerConfig");
 const serverStore = require("../serverStore");
 const friendsUpdate = require("../socketHandlers/updates/friends");
 const roomsUpdate = require("./updates/rooms");
@@ -9,6 +10,7 @@ const newConnectionHandler = async(socket,io) => {
         socketId: socket.id,
         userId: userDetails.userId,
     });
+    logger.info("user " + userDetails.userId + " joined at " + socket.id);
 
     // update request list
     friendsUpdate.updateFriendsPendingInvitations(userDetails.userId);

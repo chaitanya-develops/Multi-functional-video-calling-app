@@ -1,6 +1,7 @@
 const Message = require("../models/message");
 const Conversation = require("../models/conversation");
 const chatUpdates = require("./updates/chat");
+const logger = require("../logging/loggerConfig");
 
 const directMessageHandler = async (socket, data) => {
   try {
@@ -15,19 +16,21 @@ const directMessageHandler = async (socket, data) => {
       date: new Date(),
       type: "DIRECT",
     });
+    logger.info("Message created successfully.");
 
     const conversation = await Conversation.findOne({
       participants: { $all: [userId, receiverUserId] },
     });
+    
 
     if (conversation) {
       conversation.messages.push(message._id);
       await conversation.save();
-
+      logger.info("Push message to the conversation.")
 
       chatUpdates.updateChatHistory(conversation._id.toString());
     } else {
-
+      logger.info("Create new converssation.")
       const newConversation = await Conversation.create({
         messages: [message._id],
         participants: [userId, receiverUserId],

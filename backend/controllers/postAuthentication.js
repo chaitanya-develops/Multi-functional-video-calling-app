@@ -73,7 +73,7 @@ const registerPost = async (req,res) => {
             },
         });
     } catch (error) {
-        logger.error(error);
+        logger.error("Registration failed.");
         console.error(error);
         return res.status(500).send("Try again!");
         

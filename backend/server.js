@@ -19,24 +19,32 @@ app.use('/api/friend-invitation',friendInvitationRoutes);
 var server = http.createServer(app);
 socketServer.registerSocketServer(server);
 
-async function startServer(){
-    try{
-        server.listen(port);
-        logger.info("Server started");
-        console.log(`Server ready at ${port}`);
-    } catch(e){
-        logger.error("server down");
-        console.error(e);
-    }
-}
+// async function startServer(){
+//     try{
+//         server.listen(port);
+//         logger.info("Server started");
+//         console.log(`Server ready at ${port}`);
+//     } catch(e){
+//         logger.error("server down");
+//         console.error(e);
+//     }
+// }
 
 mongoose.connect(process.env.MONGO_URI)
 .then(() => {
     logger.info("Database connection established.");
-    startServer();  
+    try{
+        server.listen(port);
+        console.log(`server started at ${port}`);
+    } catch(e){
+        console.log("error !")
+    }
+    
 })
 .catch(err => {
     logger.error("Database connection failed.");
     console.log("Database connection failed.")
     console.error(err);
 })
+
+module.exports = server;
