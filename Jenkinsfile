@@ -14,14 +14,14 @@ pipeline{
                 git branch: 'letscall', url: 'https://github.com/chaitanya-develops/Multi-functional-video-calling-app.git'
             }
         }
-//         stage('Stage 2 : Build  backend server'){
-//             steps{
-//                 dir("backend"){
-//                     sh 'npm install'
+        stage('Stage 2 : Build  backend server'){
+            steps{
+                dir("backend"){
+                    sh 'npm install'
                    
-//                 }
-//             }
-//         }
+                }
+            }
+        }
 //          stage('Stage 3 : test  backend server'){
 //             steps{
 //                 dir("backend"){
