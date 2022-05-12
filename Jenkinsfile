@@ -50,24 +50,24 @@ pipeline{
             }
         }
 
-//         stage('Stage 6: Docker Hub Push server image') {
-//             steps {
-//                 script {
-//                     docker.withRegistry('', 'docker-jenkins') {
-//                         image_backend.push()
-//                     }
-//                 }
-//             }
-//         }
-//         stage('Stage 7: Docker Hub Push client image') {
-//             steps {
-//                 script {
-//                     docker.withRegistry('', 'docker-jenkins') {
-//                         image_frontend.push()
-//                     }
-//                 }
-//             }
-//         }       
+        stage('Stage 6: Docker Hub Push server image') {
+            steps {
+                script {
+                    docker.withRegistry('', 'docker-jenkins') {
+                        image_backend.push()
+                    }
+                }
+            }
+        }
+        stage('Stage 7: Docker Hub Push client image') {
+            steps {
+                script {
+                    docker.withRegistry('', 'docker-jenkins') {
+                        image_frontend.push()
+                    }
+                }
+            }
+        }       
 //         stage('Stage 8: Ansible Deployment to hosts'){
 //             steps{
                 
