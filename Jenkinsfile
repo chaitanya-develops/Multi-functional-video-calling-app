@@ -68,12 +68,12 @@ pipeline{
                 }
             }
         }       
-//         stage('Stage 8: Ansible Deployment to hosts'){
-//             steps{
+        stage('Stage 8: Ansible Deployment to hosts'){
+            steps{
                 
-//                 ansiblePlaybook becomeUser: 'null', colorized: true, installation: 'Ansible', inventory: 'deploy-docker/inventory', playbook: 'deploy-docker/deploy-app.yml', sudoUser: 'null'
+                ansiblePlaybook becomeUser: 'null', colorized: true, installation: 'Ansible', inventory: 'deploy-docker/inventory', playbook: 'deploy-docker/deploy-app.yml', sudoUser: 'null'
             
-//             }          
-//         }   
+            }          
+        }   
     }
 }
