@@ -31,24 +31,24 @@ pipeline{
             }
         }
         
-//         stage('Stage 4: Build Docker image for backend'){
-//             steps{
-//                 dir("backend"){
-//                     script{
-//                         image_backend= docker.build "chaitanyadevelops/videocall_server:latest"
-//                     }
-//                 }
-//             }
-//         }
-//         stage('Stage 5: Build Docker Client'){
-//             steps{
-//                 dir("frontend"){
-//                     script{
-//                         image_frontend= docker.build "chaitanyadevelops/videocall_client:latest"
-//                     }
-//                 }
-//             }
-//         }
+        stage('Stage 4: Build Docker image for backend'){
+            steps{
+                dir("backend"){
+                    script{
+                        image_backend= docker.build "chaitanyadevelops/videocall_server:latest"
+                    }
+                }
+            }
+        }
+        stage('Stage 5: Build Docker Client'){
+            steps{
+                dir("frontend"){
+                    script{
+                        image_frontend= docker.build "chaitanyadevelops/videocall_client:latest"
+                    }
+                }
+            }
+        }
 
 //         stage('Stage 6: Docker Hub Push server image') {
 //             steps {
